@@ -28,35 +28,6 @@ public final class PatternTunnel implements VeinMiningPattern {
         this.key = new NamespacedKey(VeinMiner.getPlugin(), "tunnel");
     }
 
-    VBlockFace getFacing(BlockFace face) {
-        VBlockFace f = VBlockFace.UP;
-        
-        switch(face) {
-            case DOWN:
-                f = VBlockFace.DOWN;
-                break;
-            case EAST:
-                f = VBlockFace.EAST;
-                break;
-            case NORTH:
-                f = VBlockFace.NORTH;
-                break;
-            case SOUTH:
-                f = VBlockFace.SOUTH;
-                break;
-            case UP:
-                f = VBlockFace.UP;
-                break;
-            case WEST:
-                f = VBlockFace.WEST;
-                break;
-            default:
-                break;
-        }
-
-        return f;
-    }
-
     @Override
     public void allocateBlocks(Set<Block> blocks, VeinBlock type, Block origin, ToolCategory category, ToolTemplate toolTemplate, AlgorithmConfig algorithmConfig, MaterialAlias alias, Player player) {
         int maxVeinSize = algorithmConfig.getMaxVeinSize();
