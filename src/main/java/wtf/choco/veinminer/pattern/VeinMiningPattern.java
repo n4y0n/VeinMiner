@@ -4,7 +4,7 @@ import java.util.Set;
 
 import org.bukkit.Keyed;
 import org.bukkit.block.Block;
-
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,8 +38,8 @@ public interface VeinMiningPattern extends Keyed {
      * @param algorithmConfig the algorithm configuration
      * @param alias an alias of the block being broken if one exists. May be null
      */
-    public void allocateBlocks(@NotNull Set<Block> blocks, @NotNull VeinBlock type, @NotNull Block origin, @NotNull ToolCategory category, @Nullable ToolTemplate template, @NotNull AlgorithmConfig algorithmConfig, @Nullable MaterialAlias alias);
-
+    public void allocateBlocks(@NotNull Set<Block> blocks, @NotNull VeinBlock type, @NotNull Block origin, @NotNull ToolCategory category, @Nullable ToolTemplate template, @NotNull AlgorithmConfig algorithmConfig, @Nullable MaterialAlias alias, @Nullable Player player);
+    
     /**
      * Allocate the blocks that should be broken by the vein mining pattern. Note that the breaking
      * of the blocks should not be handled by the pattern, but rather the plugin itself. This method
@@ -57,7 +57,6 @@ public interface VeinMiningPattern extends Keyed {
      * @param algorithmConfig the algorithm configuration
      */
     public default void allocateBlocks(@NotNull Set<Block> blocks, @NotNull VeinBlock type, @NotNull Block origin, @NotNull ToolCategory category, @Nullable ToolTemplate template, @NotNull AlgorithmConfig algorithmConfig) {
-        this.allocateBlocks(blocks, type, origin, category, template, algorithmConfig, null);
+        this.allocateBlocks(blocks, type, origin, category, template, algorithmConfig, null, null);
     }
-
 }

@@ -138,18 +138,12 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Anticheats (must be locally installed - no available Maven repositories) -->
-    <dependency> <!-- No separate API artifact. Must have purchased AntiAura -->
-      <groupId>me.joehot200</groupId>
-      <artifactId>AntiAura</artifactId>
-      <version>11.71</version>
-      <scope>provided</scope>
-    </dependency>
     <dependency> <!-- Direct download available at https://vagdedes.com/spartan/api/SpartanAPI.jar -->
       <groupId>me.vagdedes</groupId>
       <artifactId>SpartanAPI</artifactId>
       <version>360.3</version>
-      <scope>provided</scope>
+      <scope>system</scope>
+      <systemPath>${basedir}/SpartanAPI.jar</systemPath>
     </dependency>
   </dependencies>
 </project>

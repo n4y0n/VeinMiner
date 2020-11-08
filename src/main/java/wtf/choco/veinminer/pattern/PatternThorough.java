@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 
 import wtf.choco.veinminer.VeinMiner;
 import wtf.choco.veinminer.api.VBlockFace;
@@ -41,7 +42,7 @@ public final class PatternThorough implements VeinMiningPattern {
     }
 
     @Override
-    public void allocateBlocks(Set<Block> blocks, VeinBlock type, Block origin, ToolCategory category, ToolTemplate toolTemplate, AlgorithmConfig algorithmConfig, MaterialAlias alias) {
+    public void allocateBlocks(Set<Block> blocks, VeinBlock type, Block origin, ToolCategory category, ToolTemplate toolTemplate, AlgorithmConfig algorithmConfig, MaterialAlias alias, Player player) {
         int maxVeinSize = algorithmConfig.getMaxVeinSize();
         VBlockFace[] facesToMine = PatternUtils.getFacesToMine(algorithmConfig);
 

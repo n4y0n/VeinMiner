@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import wtf.choco.veinminer.VeinMiner;
@@ -40,7 +41,7 @@ public final class PatternExpansive implements VeinMiningPattern {
     }
 
     @Override
-    public void allocateBlocks(Set<Block> blocks, VeinBlock type, Block origin, ToolCategory category, ToolTemplate toolTemplate, AlgorithmConfig algorithmConfig, MaterialAlias alias) {
+    public void allocateBlocks(Set<Block> blocks, VeinBlock type, Block origin, ToolCategory category, ToolTemplate toolTemplate, AlgorithmConfig algorithmConfig, MaterialAlias alias, Player player) {
         this.recent.add(origin); // For first iteration
 
         int maxVeinSize = algorithmConfig.getMaxVeinSize();
