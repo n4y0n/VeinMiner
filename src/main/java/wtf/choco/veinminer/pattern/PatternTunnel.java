@@ -1,7 +1,5 @@
 package wtf.choco.veinminer.pattern;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import org.bukkit.NamespacedKey;
@@ -10,7 +8,6 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 
 import wtf.choco.veinminer.VeinMiner;
-import wtf.choco.veinminer.api.VBlockFace;
 import wtf.choco.veinminer.data.AlgorithmConfig;
 import wtf.choco.veinminer.data.MaterialAlias;
 import wtf.choco.veinminer.data.block.VeinBlock;
@@ -22,7 +19,6 @@ public final class PatternTunnel implements VeinMiningPattern {
     private static PatternTunnel instance;
 
     private final NamespacedKey key;
-    private final List<Block> blockBuffer = new ArrayList<>();
 
     private PatternTunnel() {
         this.key = new NamespacedKey(VeinMiner.getPlugin(), "tunnel");

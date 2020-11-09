@@ -34,6 +34,7 @@ import wtf.choco.veinminer.integration.WorldGuardIntegration;
 import wtf.choco.veinminer.listener.BreakBlockListener;
 import wtf.choco.veinminer.listener.PlayerDataListener;
 import wtf.choco.veinminer.metrics.StatTracker;
+import wtf.choco.veinminer.pattern.Pattern3x3;
 import wtf.choco.veinminer.pattern.PatternExpansive;
 import wtf.choco.veinminer.pattern.PatternRegistry;
 import wtf.choco.veinminer.pattern.PatternThorough;
@@ -89,6 +90,7 @@ public final class VeinMiner extends JavaPlugin {
         this.patternRegistry.registerPattern(PatternThorough.get());
         this.patternRegistry.registerPattern(PatternExpansive.get());
         this.patternRegistry.registerPattern(PatternTunnel.get());
+        this.patternRegistry.registerPattern(Pattern3x3.get());
 
         ReflectionUtil.init(Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]);
 
