@@ -57,7 +57,7 @@ public final class Pattern3x3 implements VeinMiningPattern {
                         break;
 				}
 
-				if (PatternUtils.isOfType(type, alias, p))
+				if (PatternUtils.isOfType(type, alias, p) || !algorithmConfig.isUseSameType())
 				{
 					blocks.add(p);
 				}

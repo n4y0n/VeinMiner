@@ -27,6 +27,7 @@ public class AlgorithmConfig implements Cloneable {
     private boolean includeEdges = true;
     private int maxVeinSize = 64;
     private double cost = 0.0D;
+    private boolean useSameType = true;
     private Set<UUID> disabledWorlds = new HashSet<>();
 
     /**
@@ -44,6 +45,7 @@ public class AlgorithmConfig implements Cloneable {
         this.includeEdges = section.getBoolean("IncludeEdges", (defaultValues != null) ? defaultValues.includeEdges : includeEdges);
         this.maxVeinSize = section.getInt("MaxVeinSize", (defaultValues != null) ? defaultValues.maxVeinSize : maxVeinSize);
         this.cost = section.getDouble("Cost", (defaultValues != null) ? defaultValues.cost : cost);
+        this.useSameType = section.getBoolean("UseSameType", (defaultValues != null) ? defaultValues.useSameType : useSameType);
 
         if (section.contains("DisabledWorlds")) {
             section.getStringList("DisabledWorlds").forEach(worldName -> {
@@ -229,6 +231,15 @@ public class AlgorithmConfig implements Cloneable {
         return world != null && (disabledWorlds.contains(world.getUID()));
     }
 
+    public boolean isUseSameType() {
+		return useSameType;
+    }
+    
+    public AlgorithmConfig useSameType(boolean value) {
+        this.useSameType = value;
+        return this;
+    }
+
     /**
      * Read configured values from a raw Map<String, Object>. This is not a recommended
      * means of reading data and exists solely for internal use.
@@ -248,6 +259,7 @@ public class AlgorithmConfig implements Cloneable {
         Object maxVeinSize = raw.get("MaxVeinSize");
         Object cost = raw.get("Cost");
         Object disabledWorlds = raw.get("DisabledWorlds");
+        Object useSameType = raw.get("UseSameType");
 
         if (repairFriendlyVeinMiner instanceof Boolean) {
             this.repairFriendly((boolean) repairFriendlyVeinMiner);
@@ -260,6 +272,9 @@ public class AlgorithmConfig implements Cloneable {
         }
         if (cost instanceof Number) {
             this.cost(Math.max((double) cost, 0.0));
+        }
+        if (useSameType instanceof Boolean) {
+            this.useSameType((boolean) useSameType);
         }
         if (disabledWorlds instanceof List) {
             ((List<Object>) disabledWorlds).stream().filter(o -> o instanceof String).map(s -> UUID.fromString((String) s))
@@ -280,7 +295,7 @@ public class AlgorithmConfig implements Cloneable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(repairFriendly, includeEdges, maxVeinSize, cost, disabledWorlds);
+        return Objects.hash(repairFriendly, includeEdges, maxVeinSize, cost, disabledWorlds, useSameType);
     }
 
     @Override
@@ -297,5 +312,4 @@ public class AlgorithmConfig implements Cloneable {
         return repairFriendly == other.repairFriendly && includeEdges == other.includeEdges
             && maxVeinSize == other.maxVeinSize && cost == other.cost && Objects.equals(disabledWorlds, other.disabledWorlds);
     }
-
 }

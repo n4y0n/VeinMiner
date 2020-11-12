@@ -9,6 +9,7 @@ PerformUpdateChecks: true
 
 SortBlocklistAlphabetically: true
 RepairFriendlyVeinminer: false
+UseSameType: false
 IncludeEdges: true
 MaxVeinSize: 64
 Cost: 0.0
